@@ -52,10 +52,12 @@ def generate_recipe(ingredients: str, dietary_preferences="NOTHING"):
         prompt = f"input: {ingredients}\n{dietary_preferences}"
     predefined_outputs.append(prompt)
     result = model.generate_content(predefined_outputs)
-    return result
+    answer = result.text
+    predefined_outputs.append(f"output:{answer}")
+    return answer
 
 # Example to generate recipe
 ingredients = "steak, tomatoes, orange"
 restrictions = "high-protein"
 output = generate_recipe(ingredients, restrictions) #take out restrictions from the arguments if you do not want to specify any
-print("Model response:\n", output.text)
+print("Model response:\n", output)
