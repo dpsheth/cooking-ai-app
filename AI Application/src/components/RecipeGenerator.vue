@@ -6,7 +6,7 @@
         </div>
       
         <div class="sample-text">
-            <p>Welcome to AutoChef! Enter your ingredients below and let us suggest some recipes for you!</p>
+            <p>Welcome to AutoChef! Enter some ingredients below and let me suggest some recipes for you! Please separate ingredients with commas and spaces between them (ex. "steak, cheese, penne noodles, tomato sauce").</p>
         </div>
 
       <div class="input-section">
@@ -35,7 +35,7 @@
         </div>
         <div class="photo-icon">
             <img src="../assets/jasper-modified.png" alt="Icon 2" class="icon-image" />
-            <p class="icon-name">Jasper Lieu</p>
+            <p class="icon-name">Jasper Liu</p>
         </div>
         <div class="photo-icon">
             <img src="../assets/nick.png" alt="Icon 3" class="icon-image" />
@@ -44,7 +44,7 @@
     </div>
 
     <div class="sample-text2">
-        <p>Welcome to AutoChef! Enter your ingredients below and let us suggest some recipes for you!</p>
+        <p>Our website was created for Google Developer Group's "Build with AI Hackathon" 2024 at Cal Poly Pomona. It was built with the Vue.js framework and uses Google's Gemini API for the recipes. The GitHub repository can be found <a href="https://github.com/dpsheth/cooking-ai-app" target="_blank">here.</a></p>
     </div>
 
     </div>
@@ -57,9 +57,11 @@
       return {
         ingredients: '',
         options: [
-          { label: 'Option 1', checked: false },
-          { label: 'Option 2', checked: false },
-          { label: 'Option 3', checked: false }
+          { label: 'Vegetarian', checked: false },
+          { label: 'High Protein', checked: false },
+          { label: 'Low Protein', checked: false },
+          { label: 'High Carb', checked: false },
+          { label: 'Low Carb', checked: false }
         ],
         recipes: []
       };
@@ -67,7 +69,7 @@
     methods: {
       generateRecipes() {
         // Placeholder recipes for demonstration; replace with API call
-        this.recipes = ["Recipe A", "Recipe B", "Recipe C", "Recipe D", "Recipe E"];
+        this.recipes = [];
       }
     }
   };
