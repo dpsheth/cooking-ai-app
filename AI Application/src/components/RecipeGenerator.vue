@@ -4,7 +4,7 @@
         <div class="input-section">
             <h2>Input</h2>
             <input type="text" placeholder="Enter ingredients or preferences..." class="input-box">
-            <button class="chatbot-btn">Chatbot?</button>
+            <button class="chatbot-btn">Submit</button>
             <div class="dietary-restrictions">
                 <h3>Dietary Restrictions:</h3>
                 <button class="dietary-btn">Vegan</button>

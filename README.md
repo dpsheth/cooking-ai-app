@@ -1,1 +1,1 @@
-# dooking-ai-app
+# cooking-ai-app
