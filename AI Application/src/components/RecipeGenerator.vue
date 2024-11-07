@@ -1,146 +1,146 @@
 <template>
-    <div class="container">
-        <!-- Input Section -->
-        <div class="input-section">
-            <h2>Input</h2>
-            <input type="text" placeholder="Enter ingredients or preferences..." class="input-box">
-            <button class="chatbot-btn">Submit</button>
-            <div class="dietary-restrictions">
-                <h3>Dietary Restrictions:</h3>
-                <button class="dietary-btn">Vegan</button>
-                <button class="dietary-btn">Nut-Free</button>
-                <button class="dietary-btn">Gluten-Free</button>
-                <!-- Add more dietary options as needed -->
-            </div>
-        </div>
-
-        <!-- Output Section -->
-        <div class="output-section">
-            <h2>Output</h2>
-            <div class="output-content">
-                <h3>Ingredients</h3>
-                <ul class="ingredients-list">
-                    <!-- Ingredients will be populated here -->
-                    <li>Example Ingredient 1</li>
-                    <li>Example Ingredient 2</li>
-                </ul>
-
-                <h3>Recipe Instructions</h3>
-                <p class="recipe-instructions">
-                    <!-- Recipe instructions will be populated here -->
-                    Follow the steps to complete your recipe.
-                </p>
-            </div>
-            <!-- Action Icons -->
-            <div class="action-icons">
-                <button class="icon-btn">🔄</button>
-                <button class="icon-btn">💾</button>
-            </div>
-        </div>
+  <div class="container">
+    <h1>AutoChef</h1>
+    
+    <div class="input-section">
+      <input type="text" v-model="ingredients" placeholder="Enter ingredients here..." />
     </div>
+
+    <div class="checkboxes">
+      <div class="checkbox-item" v-for="(option, index) in options" :key="index">
+        <input type="checkbox" v-model="option.checked" :id="'option' + index">
+        <label :for="'option' + index">{{ option.label }}</label>
+      </div>
+    </div>
+
+    <button id="submit-btn" @click="generateRecipes">Submit</button>
+
+    <div class="recipes">
+      <div class="recipe-box" v-for="(recipe, index) in recipes" :key="index">
+        {{ recipe }}
+      </div>
+    </div>
+
+    <div class="photo-icons">
+      <div class="photo-icon" v-for="(icon, index) in photoIcons" :key="index"></div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'RecipeGenerator'
+  name: 'AutoChef',
+  data() {
+    return {
+      ingredients: '',
+      options: [
+        { label: 'Option 1', checked: false },
+        { label: 'Option 2', checked: false },
+        { label: 'Option 3', checked: false }
+      ],
+      recipes: [],
+      photoIcons: [1, 2, 3]  // Placeholder for photo icon elements
+    };
+  },
+  methods: {
+    generateRecipes() {
+      // Placeholder recipes for demonstration; replace with API call
+      this.recipes = ["Recipe A", "Recipe B", "Recipe C", "Recipe D", "Recipe E"];
+    }
+  }
 };
 </script>
 
 <style scoped>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
 }
 
 .container {
-    display: flex;
-    gap: 2rem;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
-.input-section, .output-section {
-    flex: 1;
-    padding: 1rem;
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
 .input-section {
-    border-right: 2px solid #ccc;
+  margin-bottom: 20px;
 }
 
-.input-section h2, .output-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+input[type="text"] {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-.input-box {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+.checkboxes {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
 }
 
-.chatbot-btn {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 1rem;
+.checkbox-item {
+  display: flex;
+  align-items: center;
 }
 
-.dietary-restrictions h3 {
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+.checkbox-item input {
+  margin-right: 5px;
 }
 
-.dietary-btn {
-    display: inline-block;
-    padding: 0.5rem;
-    margin: 0.2rem;
-    background-color: #ddd;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+#submit-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.output-section {
-    position: relative;
+#submit-btn:hover {
+  background-color: #45a049;
 }
 
-.output-content h3 {
-    font-size: 1.2rem;
-    margin-top: 1rem;
+.recipes {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
-.ingredients-list {
-    list-style: none;
-    margin: 1rem 0;
+.recipe-box {
+  width: 18%;
+  padding: 10px;
+  background-color: #e8e8e8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  height: 100px;
 }
 
-.recipe-instructions {
-    margin-top: 1rem;
-    line-height: 1.5;
+.photo-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
-.action-icons {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    display: flex;
-    gap: 1rem;
-}
-
-.icon-btn {
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
+.photo-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
+  border-radius: 50%;
 }
 </style>
